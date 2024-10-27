@@ -59,7 +59,7 @@ function userConfigToMenu(config: UserConfiguration | undefined): NavbarMenu[] {
           icon: getIcon(link.target as string),
         })) || [],
     })) || [];
-
+/*  REMOVE SECURITY FROM MENU AJWWONG  10/27/24
   result.push({
     title: 'Settings',
     links: [
@@ -70,7 +70,7 @@ function userConfigToMenu(config: UserConfiguration | undefined): NavbarMenu[] {
       },
     ],
   });
-
+*/
   return result;
 }
 
