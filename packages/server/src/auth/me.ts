@@ -85,15 +85,15 @@ async function getUserConfiguration(
   }
 
  // const favorites = ['Patient', 'Practitioner', 'Organization', 'ServiceRequest', 'DiagnosticReport', 'Questionnaire'];
- const favorites = ['Composition'];
+ // const favorites = ['Composition'];
 
   const result = {
     resourceType: 'UserConfiguration',
     menu: [
-      {
+      /*{
         title: 'Favorites',
         link: favorites.map((resourceType) => ({ name: resourceType, target: '/' + resourceType })),
-      },
+      },*/
       {
         title: 'Start Session',
         link: [{ name: 'Start Session', target: '/start-session' }],
