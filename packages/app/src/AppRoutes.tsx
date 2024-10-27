@@ -55,6 +55,7 @@ import { ResourceVersionPage } from './resource/ResourceVersionPage';
 import { SubscriptionsPage } from './resource/SubscriptionsPage';
 import { TimelinePage } from './resource/TimelinePage';
 import { ToolsPage } from './resource/ToolsPage';
+import { StartSessionPage } from './StartSessionPage';
 
 export function AppRoutes(): JSX.Element {
   return (
@@ -122,6 +123,7 @@ export function AppRoutes(): JSX.Element {
           <Route path="tools" element={<ToolsPage />} />
           <Route path="profiles" element={<ProfilesPage />} />
         </Route>
+        <Route path="/start-session" element={<StartSessionPage />} />
         <Route path="/:resourceType" element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
       </Route>

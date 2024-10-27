@@ -84,7 +84,8 @@ async function getUserConfiguration(
     return systemRepo.readReference<UserConfiguration>(membership.userConfiguration);
   }
 
-  const favorites = ['Patient', 'Practitioner', 'Organization', 'ServiceRequest', 'DiagnosticReport', 'Questionnaire'];
+ // const favorites = ['Patient', 'Practitioner', 'Organization', 'ServiceRequest', 'DiagnosticReport', 'Questionnaire'];
+ const favorites = ['Composition'];
 
   const result = {
     resourceType: 'UserConfiguration',
@@ -93,9 +94,13 @@ async function getUserConfiguration(
         title: 'Favorites',
         link: favorites.map((resourceType) => ({ name: resourceType, target: '/' + resourceType })),
       },
+      {
+        title: 'Start Session',
+        link: [{ name: 'Start Session', target: '/start-session' }],
+      },
     ],
   } satisfies UserConfiguration;
-
+/*
   if (membership.admin) {
     result.menu.push({
       title: 'Admin',
@@ -108,7 +113,7 @@ async function getUserConfiguration(
       ],
     });
   }
-
+*/
   if (project.superAdmin) {
     result.menu.push({
       title: 'Super Admin',
