@@ -1,8 +1,11 @@
 import { Box, Button, Container, Group, Switch, Text, Title } from '@mantine/core';
-import { IconHeadphones, IconMicrophone, IconPlayerRecord, IconPlayerStop, IconPlayerPlay } from '@tabler/icons-react';
+import { IconHeadphones, IconMicrophone, IconPlayerRecord, IconPlayerStop, IconPlayerPlay, IconFileText } from '@tabler/icons-react';
 import { useState, useRef } from 'react';
 import { useMedplum } from '@medplum/react';
-import { Media } from '@medplum/fhirtypes';
+import { Media, Task } from '@medplum/fhirtypes';
+
+// Add your Deepgram API key
+const DEEPGRAM_API_KEY = '93df6774b2f565ee5cb40354faa45ab528eee9a2';
 
 export function StartSessionPage(): JSX.Element {
   const medplum = useMedplum();
@@ -103,6 +106,63 @@ export function StartSessionPage(): JSX.Element {
     }
   };
 
+  const generateNote = async () => {
+    if (!mediaId) return;
+
+    try {
+      const media = await medplum.readResource('Media', mediaId);
+      
+      if (!media.content?.data) {
+        throw new Error('No audio data found');
+      }
+
+      // Convert base64 to blob
+      const binaryData = atob(media.content.data);
+      const arrayBuffer = new Uint8Array(binaryData.length);
+      for (let i = 0; i < binaryData.length; i++) {
+        arrayBuffer[i] = binaryData.charCodeAt(i);
+      }
+      const audioBlob = new Blob([arrayBuffer], { type: media.content.contentType });
+
+      // Send to Deepgram
+      const response = await fetch('https://api.deepgram.com/v1/listen', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Token ${DEEPGRAM_API_KEY}`,
+          'Content-Type': media.content.contentType || 'audio/webm'
+        },
+        body: audioBlob
+      });
+
+      const data = await response.json();
+      const transcript = data.results?.channels[0]?.alternatives[0]?.transcript;
+
+      if (transcript) {
+        // Create a Task resource with the transcript
+        const task: Task = {
+          resourceType: 'Task',
+          status: 'completed',
+          intent: 'order',
+          description: 'Therapy Session Transcript',
+          note: [{
+            text: transcript
+          }],
+          output: [{
+            type: {
+              text: 'Transcript'
+            },
+            valueString: transcript
+          }]
+        };
+
+        await medplum.createResource(task);
+        console.log('Transcript saved:', transcript);
+      }
+    } catch (err) {
+      console.error('Error generating note:', err);
+    }
+  };
+
   return (
     <Container size="sm" mt="xl">
       <Box p="xl" sx={(theme) => ({
@@ -145,6 +205,19 @@ export function StartSessionPage(): JSX.Element {
               onClick={playAudio}
             >
               Play Audio
+            </Button>
+          )}
+          
+          {mediaId && !isRecording && (
+            <Button
+              fullWidth
+              size="md"
+              color="teal"
+              loading={false}
+              leftIcon={<IconFileText size={20} />}
+              onClick={generateNote}
+            >
+              Generate Note
             </Button>
           )}
         </Group>
