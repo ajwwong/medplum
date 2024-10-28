@@ -55,7 +55,7 @@ import { ResourceVersionPage } from './resource/ResourceVersionPage';
 import { SubscriptionsPage } from './resource/SubscriptionsPage';
 import { TimelinePage } from './resource/TimelinePage';
 import { ToolsPage } from './resource/ToolsPage';
-import { StartSessionPage } from './StartSessionPage';
+import { StartSessionPage } from '../../../src/pages/StartSessionPage';
 
 export function AppRoutes(): JSX.Element {
   return (
