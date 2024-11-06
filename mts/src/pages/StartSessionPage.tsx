@@ -4,9 +4,6 @@ import { useState, useRef } from 'react';
 import { useMedplum } from '@medplum/react';
 import { Media, Task } from '@medplum/fhirtypes';
 
-// Add your Deepgram API key
-const DEEPGRAM_API_KEY = '93df6774b2f565ee5cb40354faa45ab528eee9a2';
-
 export function StartSessionPage(): JSX.Element {
   const medplum = useMedplum();
   const [isRecording, setIsRecording] = useState(false);
@@ -128,7 +125,7 @@ export function StartSessionPage(): JSX.Element {
       const response = await fetch('https://api.deepgram.com/v1/listen', {
         method: 'POST',
         headers: {
-          'Authorization': `Token ${DEEPGRAM_API_KEY}`,
+          'Authorization': `Token ${process.env.REACT_APP_DEEPGRAM_API_KEY}`,
           'Content-Type': media.content.contentType || 'audio/webm'
         },
         body: audioBlob
