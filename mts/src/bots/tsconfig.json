@@ -1,0 +1,12 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/bots",
+    "rootDir": ".",
+    "module": "commonjs",
+    "target": "es2020",
+    "sourceMap": true
+  },
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules", "**/*.test.ts"]
+}

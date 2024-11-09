@@ -18,12 +18,12 @@
       "source": "src/create-pdf.ts",
       "dist": "dist/create-pdf.js"
     },
-    {
+    /*{
       "name": "sample-account-setup",
-      "id": "",
+      "id": "1aa2c1a0-0ddd-4fee-9953-4eb2f44a3d07",
       "source": "src/sample-account-setup.ts",
       "dist": "dist/sample-account-setup.js"
-    },
+    },*/
     {
       "name": "sample-account-staging",
       "id": "",
@@ -89,6 +89,12 @@
       "id": "",
       "source": "./src/slack-bots/demo-slack-bot.ts",
       "dist": "./dist/slack-bots/demo-slack-bot.js"
+    },
+    {
+      "name": "bugga-boo-the-brave-bot",
+      "id": "1aa2c1a0-0ddd-4fee-9953-4eb2f44a3d07",
+      "source": "./src/bugga-boo-the-brave-bot.ts",
+      "dist": "./dist/bugga-boo-the-brave-bot.js"
     }
   ]
 }

@@ -9,6 +9,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     host: 'localhost',
+    //https: true,
     port: 3000,
   },
 });

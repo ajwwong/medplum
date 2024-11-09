@@ -1,0 +1,17 @@
+{
+  "name": "mts",
+  "version": "1.0.0",
+  "scripts": {
+    "build:bots": "tsc -p src/bots/tsconfig.json",
+    "deploy:bots": "ts-node scripts/deploy-bots.ts"
+  },
+  "dependencies": {
+    "@medplum/core": "^2.0.0",
+    "@medplum/fhirtypes": "^2.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}

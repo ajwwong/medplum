@@ -75,6 +75,15 @@
     "trim": "0.0.3"
   },
   "dependencies": {
+    "@deepgram/sdk": "^3.9.0",
     "dotenv": "^16.4.5"
-  }
+  },
+  "description": "![Medplum](packages/docs/static/img/cover.webp)",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
