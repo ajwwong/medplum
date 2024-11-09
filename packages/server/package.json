@@ -23,6 +23,7 @@
     "test:seed": "jest seed.test.ts --testTimeout=400000"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
     "@aws-sdk/client-cloudwatch-logs": "3.675.0",
     "@aws-sdk/client-comprehendmedical": "3.675.0",
     "@aws-sdk/client-lambda": "3.675.0",

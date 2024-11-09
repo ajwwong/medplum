@@ -12,6 +12,7 @@ services:
       - POSTGRES_USER=medplum
       - POSTGRES_PASSWORD=medplum
     volumes:
+      - postgres_data:/var/lib/postgresql/data
       - ./postgres/postgres.conf:/usr/local/etc/postgres/postgres.conf
       - ./postgres/:/docker-entrypoint-initdb.d/
     command: postgres -c config_file=/usr/local/etc/postgres/postgres.conf
@@ -23,3 +24,8 @@ services:
     command: redis-server --requirepass medplum
     ports:
       - '6379:6379'
+
+volumes:
+  postgres_data:
+    external: true
+    name: adc449535064eb71aada14aa7dbf901704e24fadafda9aeb9e22f5f00e2c96cd
