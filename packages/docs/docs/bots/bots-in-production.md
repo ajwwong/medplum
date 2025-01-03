@@ -40,7 +40,7 @@ npm install
 
 ## Setting up your Permissions
 
-Because Bots contain important or sensitive code, it's important to prevent unauthorized users from modifying your Bots. Medplum uses the [client credentials workflow](/docs/auth/methods/client-credentials) authenticate the [Medplum CLI](https://github.com/medplum/medplum/tree/main/packages/cli).
+Because Bots contain important or sensitive code, it's important to prevent unauthorized users from modifying your Bots. Medplum uses the [client credentials workflow](/docs/auth/methods/client-credentials) to authenticate the [Medplum CLI](https://github.com/medplum/medplum/tree/main/packages/cli).
 
 First, you should create a Client Application on the Medplum Server by following [these directions](/docs/auth/methods/client-credentials).
 
