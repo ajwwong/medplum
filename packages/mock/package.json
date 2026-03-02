@@ -62,10 +62,10 @@
     "@medplum/fhirtypes": "5.0.10",
     "dataloader": "2.2.3",
     "jest-websocket-mock": "2.5.0",
-    "rfc6902": "5.1.2"
+    "rfc6902": "5.2.0"
   },
   "devDependencies": {
-    "@types/pdfmake": "0.2.12"
+    "@types/pdfmake": "0.3.2"
   },
   "engines": {
     "node": "^22.18.0 || >=24.2.0"
